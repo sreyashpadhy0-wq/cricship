@@ -6,7 +6,7 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: Arial;
             background: #0b1e3f;
             color: white;
         }
@@ -14,8 +14,6 @@
         nav {
             background: #111;
             padding: 15px;
-            display: flex;
-            justify-content: space-between;
         }
 
         nav h1 {
@@ -24,7 +22,7 @@
         }
 
         .hero {
-            padding: 60px;
+            padding: 50px;
             text-align: center;
             background: linear-gradient(to right, #1e90ff, #0b1e3f);
         }
@@ -36,56 +34,27 @@
         .card {
             background: #162447;
             padding: 15px;
-            margin: 15px 0;
+            margin: 10px 0;
             border-radius: 10px;
-            transition: 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        button {
+            background: #1e90ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
         }
 
-        a.live-link {
-            color: #1e90ff;
-            font-size: 18px;
-            text-decoration: none;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: #111;
-            margin-top: 20px;
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
-    <div class="container">
-    <h2>✍️ Write Your Article</h2>
 
-    <input id="title" placeholder="Enter title..." 
-    style="width:100%; padding:10px; margin-bottom:10px;">
-
-    <textarea id="content" placeholder="Write your article..." 
-    style="width:100%; padding:10px; height:100px;"></textarea>
-
-    <br><br>
-
-    <button onclick="addPost()" 
-    style="padding:10px 20px; background:#1e90ff; color:white; border:none; border-radius:8px;">
-        Post
-    </button>
-</div>
-    <div class="container">
-    <h2>📰 Your Posts</h2>
-    <div id="posts"></div>
-</div>
-<script>
-function openPlayer(player) {
-    if (player === "kohli") {
-        alert("Virat Kohli\n\nRole: Batsman\nRuns: 25,000+\nAverage: 50+\n\nOne of the greatest modern cricketers.");
-    }
-}
-</script>
 <body>
 
 <nav>
@@ -94,134 +63,30 @@ function openPlayer(player) {
 
 <div class="hero">
     <h2>Welcome to Cricship</h2>
-    <p>Your hub for cricket facts, players & analysis</p>
 </div>
 
-<!-- LIVE LINK ONLY -->
+<!-- LIVE LINK -->
 <div class="container">
     <h2>🔴 Live Cricket</h2>
 
     <div class="card">
-        <p>Watch real-time live cricket scores here:</p>
-
-        <a class="live-link" href="https://www.cricbuzz.com/cricket-match/live-scores" target="_blank">
-            👉 Click here to view Live Matches
-        </a>
-    </div>
-</div>
-
-<!-- PLAYER SECTION -->
-<div class="container">
-    <h2>🏏 Top Cricketers</h2>
-
-   <div class="card" onclick="openPlayer('kohli')">
-    <h3>Virat Kohli 🇮🇳</h3>
-    <p>Click to view full profile</p>
-</div>
-
-    <div class="card">
-        <h3>Rohit Sharma 🇮🇳</h3>
-        <p>Highest ODI score (264). Known for big innings.</p>
-    </div>
-
-    <div class="card">
-        <h3>Joe Root 🇬🇧</h3>
-        <p>England’s most reliable Test batsman.</p>
-    </div>
-
-    <div class="card">
-        <h3>Steve Smith 🇦🇺</h3>
-        <p>50+ Test average. Unique batting technique.</p>
-    </div>
-
-    <div class="card">
-        <h3>Kane Williamson 🇳🇿</h3>
-        <p>Calm and technically strong captain.</p>
-    </div>
-
-</div>
-
-<!-- FACTS -->
-<div class="container">
-    <h2>📊 Cricket Facts</h2>
-
-    <div class="card"><p>Sachin Tendulkar scored 100 centuries.</p></div>
-    <div class="card"><p>Don Bradman average: 99.94.</p></div>
-    <div class="card"><p>Rohit Sharma scored 264 in ODIs.</p></div>
-    <div class="card"><p>Test cricket lasts up to 5 days.</p></div>
-</div>
-<div class="container">
-    <h2>🏏 Live Matches</h2>
-
-    <div class="card">
-        <h3>🔴 Live Cricket Scores</h3>
-        <p>Click below to view real-time live matches on Cricbuzz:</p>
-
-        <button onclick="openLive()" 
-        style="padding:12px 20px; background:#1e90ff; color:white; border:none; border-radius:8px; cursor:pointer; font-size:16px;">
+        <button onclick="window.open('https://www.cricbuzz.com/cricket-match/live-scores')">
             Watch Live Matches
         </button>
     </div>
 </div>
 
-<script>
-function openLive() {
-    window.open("https://www.cricbuzz.com/cricket-match/live-scores", "_blank");
-}
-</script>
-<footer>
-    © 2026 Cricship | Made by Shreyas 🚀
-</footer>
-<script>
-function openPlayer(player) {
-    if (player === "kohli") {
-        alert("Virat Kohli\n\nRole: Batsman\nRuns: 25,000+\nAverage: 50+\n\nOne of the greatest modern cricketers.");
-    }
-}
-</script>
-    <script>
-function addPost() {
-    let title = document.getElementById("title").value;
-    let content = document.getElementById("content").value;
-
-    if (title === "" || content === "") {
-        alert("Please fill all fields");
-        return;
-    }
-
-    let post = `
-        <div class="card">
-            <h3>${title}</h3>
-            <p>${content}</p>
-        </div>
-    `;
-
-    document.getElementById("posts").innerHTML += post;
-
-    // clear fields
-    document.getElementById("title").value = "";
-    document.getElementById("content").value = "";
-}
-</script>
-   <!-- WRITE ARTICLE -->
+<!-- WRITE POST -->
 <div class="container">
     <h2>✍️ Write Your Article</h2>
 
-    <input id="title" placeholder="Enter title..." 
-    style="width:100%; padding:10px; margin-bottom:10px;">
+    <input id="title" placeholder="Enter title">
+    <textarea id="content" placeholder="Write your article"></textarea>
 
-    <textarea id="content" placeholder="Write your article..." 
-    style="width:100%; padding:10px; height:100px;"></textarea>
-
-    <br><br>
-
-    <button onclick="addPost()" 
-    style="padding:10px 20px; background:#1e90ff; color:white; border:none; border-radius:8px;">
-        Post
-    </button>
+    <button onclick="addPost()">Post</button>
 </div>
 
-<!-- POSTS DISPLAY -->
+<!-- SHOW POSTS -->
 <div class="container">
     <h2>📰 Your Posts</h2>
     <div id="posts"></div>
@@ -233,22 +98,18 @@ function addPost() {
     let content = document.getElementById("content").value;
 
     if (title === "" || content === "") {
-        alert("Please fill all fields");
+        alert("Fill all fields");
         return;
     }
 
-    let post = `
-        <div class="card">
-            <h3>${title}</h3>
-            <p>${content}</p>
-        </div>
-    `;
+    let post = "<div class='card'><h3>" + title + "</h3><p>" + content + "</p></div>";
 
     document.getElementById("posts").innerHTML += post;
 
     document.getElementById("title").value = "";
     document.getElementById("content").value = "";
 }
-</script> 
+</script>
+
 </body>
 </html>
