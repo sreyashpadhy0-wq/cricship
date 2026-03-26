@@ -11,6 +11,7 @@
             color: white;
         }
 
+        /* NAVBAR */
         nav {
             background: #111;
             padding: 15px;
@@ -23,20 +24,27 @@
             color: #1e90ff;
         }
 
+        /* HERO */
         .hero {
             padding: 60px;
             text-align: center;
             background: linear-gradient(to right, #1e90ff, #0b1e3f);
         }
 
+        .hero h2 {
+            margin: 0;
+        }
+
+        /* CONTAINER */
         .container {
             padding: 20px;
         }
 
+        /* CARDS */
         .card {
             background: #162447;
             padding: 15px;
-            margin: 10px 0;
+            margin: 15px 0;
             border-radius: 10px;
             transition: 0.3s;
         }
@@ -45,48 +53,124 @@
             transform: translateY(-5px);
         }
 
-        .match-card {
-            background: #162447;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border-left: 4px solid #1e90ff;
-        }
-
         footer {
             text-align: center;
             padding: 15px;
             background: #111;
+            margin-top: 20px;
         }
     </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav>
     <h1>🏏 Cricship</h1>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
     <h2>Welcome to Cricship</h2>
-    <p>Cricket. Passion. Analysis.</p>
+    <p>Your hub for cricket facts, players & analysis</p>
 </div>
 
+<!-- BLOG SECTION -->
 <div class="container">
-    <h2>🏏 Matches</h2>
-    <div id="matches">Loading matches...</div>
-</div>
-<div class="container">
-    <h2>🏏 Live Cricket</h2>
+    <h2>📝 Latest Cricket Insights</h2>
 
     <div class="card">
-        <p>👉 Click below to view real live cricket matches:</p>
-
-        <a href="https://www.cricbuzz.com/cricket-match/live-scores" target="_blank" 
-        style="color:#1e90ff; font-size:18px;">
-            🔴 View Live Scores on Cricbuzz
-        </a>
+        <h3>India vs Australia – My Take</h3>
+        <p>India’s middle order has shown great consistency under pressure in recent matches.</p>
     </div>
+
+    <div class="card">
+        <h3>Why T20 Cricket is Changing the Game</h3>
+        <p>T20 format is making cricket faster, more aggressive, and globally popular.</p>
+    </div>
+</div>
+
+<!-- PLAYER SECTION -->
+<div class="container">
+    <h2>🏏 Top Cricketers</h2>
+
+    <div class="card">
+        <h3>Virat Kohli 🇮🇳</h3>
+        <p><strong>Role:</strong> Batsman</p>
+        <p><strong>Runs:</strong> 25,000+ international runs</p>
+        <p><strong>Average:</strong> 50+</p>
+        <p>One of the greatest modern batsmen known for consistency.</p>
+    </div>
+
+    <div class="card">
+        <h3>Rohit Sharma 🇮🇳</h3>
+        <p><strong>Role:</strong> Batsman</p>
+        <p><strong>Highest Score:</strong> 264 (ODI)</p>
+        <p>Known for his elegant batting and big centuries.</p>
+    </div>
+
+    <div class="card">
+        <h3>Joe Root 🇬🇧</h3>
+        <p><strong>Role:</strong> Batsman</p>
+        <p><strong>Speciality:</strong> Test Cricket</p>
+        <p>One of England’s most reliable Test batsmen.</p>
+    </div>
+
+    <div class="card">
+        <h3>Steve Smith 🇦🇺</h3>
+        <p><strong>Role:</strong> Batsman</p>
+        <p><strong>Average:</strong> 50+ in Tests</p>
+        <p>Known for his unique technique and consistency.</p>
+    </div>
+
+    <div class="card">
+        <h3>Kane Williamson 🇳🇿</h3>
+        <p><strong>Role:</strong> Batsman</p>
+        <p><strong>Captain:</strong> New Zealand</p>
+        <p>Calm and technically sound player.</p>
+    </div>
+
+    <div class="card">
+        <h3>Ben Stokes 🇬🇧</h3>
+        <p><strong>Role:</strong> All-rounder</p>
+        <p>Famous for match-winning performances.</p>
+    </div>
+
+    <div class="card">
+        <h3>Babar Azam 🇵🇰</h3>
+        <p><strong>Role:</strong> Batsman</p>
+        <p>Top ranked player in white-ball cricket.</p>
+    </div>
+
+    <div class="card">
+        <h3>Jasprit Bumrah 🇮🇳</h3>
+        <p><strong>Role:</strong> Bowler</p>
+        <p>One of the best death-over bowlers.</p>
+    </div>
+
+    <div class="card">
+        <h3>Pat Cummins 🇦🇺</h3>
+        <p><strong>Role:</strong> Bowler</p>
+        <p>Australian captain and fast bowler.</p>
+    </div>
+
+    <div class="card">
+        <h3>Muttiah Muralitharan 🇱🇰</h3>
+        <p><strong>Wickets:</strong> 800 (Tests)</p>
+        <p>Highest wicket-taker in cricket history.</p>
+    </div>
+
+</div>
+
+<!-- FACTS SECTION -->
+<div class="container">
+    <h2>📊 Cricket Facts</h2>
+
+    <div class="card"><p>Sachin Tendulkar scored 100 international centuries.</p></div>
+    <div class="card"><p>Don Bradman had an average of 99.94.</p></div>
+    <div class="card"><p>Rohit Sharma holds highest ODI score (264).</p></div>
+    <div class="card"><p>IPL is the biggest T20 league.</p></div>
+    <div class="card"><p>Test cricket lasts up to 5 days.</p></div>
 </div>
 
 <footer>
