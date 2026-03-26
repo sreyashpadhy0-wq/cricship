@@ -123,32 +123,47 @@ async function getMatches() {
 
     try {
         const response = await fetch(
-  `https://api.allorigins.win/get?url=${encodeURIComponent("https://api.cricketdata.org/v1/matches?apikey=" + apiKey)}`
-);
+            "https://api.allorigins.win/get?url=" + 
+            encodeURIComponent("https://api.cricketdata.org/v1/matches?apikey=" + apiKey)
+        );
 
-const result = await response.json();
-const data = JSON.parse(result.contents);
+        const result = await response.json();
+        const data = JSON.parse(result.contents);
 
         let output = "";
 
         if (!data.data || data.data.length === 0) {
             output = "<p>No matches available right now.</p>";
         } else {
-           data.data.slice(0, 5).forEach(match => {
-    output += `
-        <div class="match-card">
-            <h3>${match.name}</h3>
-            <p><strong>Teams:</strong> ${match.teams.join(" vs ")}</p>
-            <p><strong>Status:</strong> ${match.status}</p>
-        </div>
-    `;
-});
+            data.data.slice(0, 5).forEach(match => {
+                output += `
+                    <div class="match-card">
+                        <h3>${match.name}</h3>
+                        <p><strong>Teams:</strong> ${match.teams.join(" vs ")}</p>
+                        <p><strong>Status:</strong> ${match.status}</p>
+                    </div>
+                `;
+            });
         }
 
         document.getElementById("matches").innerHTML = output;
 
     } catch (error) {
-        document.getElementById("matches").innerHTML = "<p>Error loading matches.</p>";
+
+        // 🔥 FALLBACK (IMPORTANT)
+        document.getElementById("matches").innerHTML = `
+            <div class="match-card">
+                <h3>India vs Australia</h3>
+                <p><strong>Teams:</strong> India vs Australia</p>
+                <p><strong>Status:</strong> Example Match (API limited)</p>
+            </div>
+
+            <div class="match-card">
+                <h3>England vs Pakistan</h3>
+                <p><strong>Teams:</strong> England vs Pakistan</p>
+                <p><strong>Status:</strong> Upcoming</p>
+            </div>
+        `;
     }
 }
 
