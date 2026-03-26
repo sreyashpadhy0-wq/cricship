@@ -59,6 +59,26 @@
         }
     </style>
 </head>
+    <div class="container">
+    <h2>✍️ Write Your Article</h2>
+
+    <input id="title" placeholder="Enter title..." 
+    style="width:100%; padding:10px; margin-bottom:10px;">
+
+    <textarea id="content" placeholder="Write your article..." 
+    style="width:100%; padding:10px; height:100px;"></textarea>
+
+    <br><br>
+
+    <button onclick="addPost()" 
+    style="padding:10px 20px; background:#1e90ff; color:white; border:none; border-radius:8px;">
+        Post
+    </button>
+</div>
+    <div class="container">
+    <h2>📰 Your Posts</h2>
+    <div id="posts"></div>
+</div>
 <script>
 function openPlayer(player) {
     if (player === "kohli") {
@@ -157,6 +177,30 @@ function openPlayer(player) {
     if (player === "kohli") {
         alert("Virat Kohli\n\nRole: Batsman\nRuns: 25,000+\nAverage: 50+\n\nOne of the greatest modern cricketers.");
     }
+}
+</script>
+    <script>
+function addPost() {
+    let title = document.getElementById("title").value;
+    let content = document.getElementById("content").value;
+
+    if (title === "" || content === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    let post = `
+        <div class="card">
+            <h3>${title}</h3>
+            <p>${content}</p>
+        </div>
+    `;
+
+    document.getElementById("posts").innerHTML += post;
+
+    // clear fields
+    document.getElementById("title").value = "";
+    document.getElementById("content").value = "";
 }
 </script>
 </body>
