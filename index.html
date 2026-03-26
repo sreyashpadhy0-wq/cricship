@@ -123,10 +123,11 @@ async function getMatches() {
 
     try {
         const response = await fetch(
-            `https://api.allorigins.win/raw?url=https://api.cricketdata.org/v1/matches?apikey=${apiKey}`
-        );
+  `https://api.allorigins.win/get?url=${encodeURIComponent("https://api.cricketdata.org/v1/matches?apikey=" + apiKey)}`
+);
 
-        const data = await response.json();
+const result = await response.json();
+const data = JSON.parse(result.contents);
 
         let output = "";
 
