@@ -118,53 +118,44 @@ footer {
 </div>
 
 <script>
-async function getMatches() {
-    const apiKey = "ad3b94c2-6be0-465f-bc2a-89c949eb8594";
+function getMatches() {
 
-    try {
-        const response = await fetch(
-            "https://api.allorigins.win/get?url=" + 
-            encodeURIComponent("https://api.cricketdata.org/v1/matches?apikey=" + apiKey)
-        );
-
-        const result = await response.json();
-        const data = JSON.parse(result.contents);
-
-        let output = "";
-
-        if (!data.data || data.data.length === 0) {
-            output = "<p>No matches available right now.</p>";
-        } else {
-            data.data.slice(0, 5).forEach(match => {
-                output += `
-                    <div class="match-card">
-                        <h3>${match.name}</h3>
-                        <p><strong>Teams:</strong> ${match.teams.join(" vs ")}</p>
-                        <p><strong>Status:</strong> ${match.status}</p>
-                    </div>
-                `;
-            });
+    const matches = [
+        {
+            name: "India vs Australia",
+            teams: ["India", "Australia"],
+            status: "Live - India batting"
+        },
+        {
+            name: "England vs Pakistan",
+            teams: ["England", "Pakistan"],
+            status: "Upcoming - Starts at 7 PM"
+        },
+        {
+            name: "South Africa vs New Zealand",
+            teams: ["SA", "NZ"],
+            status: "Completed - SA won"
+        },
+        {
+            name: "CSK vs MI",
+            teams: ["Chennai Super Kings", "Mumbai Indians"],
+            status: "IPL Match - Today"
         }
+    ];
 
-        document.getElementById("matches").innerHTML = output;
+    let output = "";
 
-    } catch (error) {
-
-        // 🔥 FALLBACK (IMPORTANT)
-        document.getElementById("matches").innerHTML = `
+    matches.forEach(match => {
+        output += `
             <div class="match-card">
-                <h3>India vs Australia</h3>
-                <p><strong>Teams:</strong> India vs Australia</p>
-                <p><strong>Status:</strong> Example Match (API limited)</p>
-            </div>
-
-            <div class="match-card">
-                <h3>England vs Pakistan</h3>
-                <p><strong>Teams:</strong> England vs Pakistan</p>
-                <p><strong>Status:</strong> Upcoming</p>
+                <h3>${match.name}</h3>
+                <p><strong>Teams:</strong> ${match.teams.join(" vs ")}</p>
+                <p><strong>Status:</strong> ${match.status}</p>
             </div>
         `;
-    }
+    });
+
+    document.getElementById("matches").innerHTML = output;
 }
 
 getMatches();
