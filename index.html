@@ -134,15 +134,15 @@ const data = JSON.parse(result.contents);
         if (!data.data || data.data.length === 0) {
             output = "<p>No matches available right now.</p>";
         } else {
-            data.data.slice(0, 5).forEach(match => {
-                output += ` ... `;
-                    <div class="match-card">
-                        <h3>${match.name}</h3>
-                        <p><strong>Teams:</strong> ${match.teams.join(" vs ")}</p>
-                        <p><strong>Status:</strong> ${match.status}</p>
-                    </div>
-                `;
-            });
+           data.data.slice(0, 5).forEach(match => {
+    output += `
+        <div class="match-card">
+            <h3>${match.name}</h3>
+            <p><strong>Teams:</strong> ${match.teams.join(" vs ")}</p>
+            <p><strong>Status:</strong> ${match.status}</p>
+        </div>
+    `;
+});
         }
 
         document.getElementById("matches").innerHTML = output;
