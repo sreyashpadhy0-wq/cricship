@@ -102,7 +102,22 @@
     <div id="matches">Loading matches...</div>
 </div>
 
+<script>
+async function getMatches() {
+    const apiKey = "ad3b94c2-6be0-465f-bc2a-89c949eb8594";
 
+    try {
+        const response = await fetch(
+            `https://api.allorigins.win/raw?url=https://api.cricketdata.org/v1/matches?apikey=${apiKey}`
+        );
+
+        const data = await response.json();
+
+        let output = "";
+
+        if (!data.data || data.data.length === 0) {
+            output = "<p>No matches available right now.</p>";
+        } else {
             data.data.slice(0, 5).forEach(match => {
                 output += `
                     <div class="match-card">
