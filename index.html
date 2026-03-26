@@ -3,115 +3,75 @@
 <head>
     <title>Cricship</title>
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0b1e3f;
-    color: white;
-}
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b1e3f;
+            color: white;
+        }
 
-/* NAVBAR */
-nav {
-    background: #111;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-}
+        nav {
+            background: #111;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
 
-nav h1 {
-    margin: 0;
-    color: #1e90ff;
-}
+        nav h1 {
+            margin: 0;
+            color: #1e90ff;
+        }
 
-nav a {
-    color: white;
-    margin-left: 20px;
-    text-decoration: none;
-}
+        .hero {
+            padding: 60px;
+            text-align: center;
+            background: linear-gradient(to right, #1e90ff, #0b1e3f);
+        }
 
-/* HERO */
-.hero {
-    padding: 60px 20px;
-    text-align: center;
-    background: linear-gradient(to right, #1e90ff, #0b1e3f);
-}
+        .container {
+            padding: 20px;
+        }
 
-/* CARDS */
-.container {
-    padding: 20px;
-}
+        .card {
+            background: #162447;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
 
-.card {
-    background: #162447;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 10px;
-    transition: 0.3s;
-}
+        .card:hover {
+            transform: translateY(-5px);
+        }
 
-.card:hover {
-    transform: translateY(-5px);
-}
+        .match-card {
+            background: #162447;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 4px solid #1e90ff;
+        }
 
-/* MATCH CARDS */
-.match-card {
-    background: #162447;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 10px;
-    border-left: 4px solid #1e90ff;
-    transition: 0.3s;
-}
-
-.match-card:hover {
-    transform: scale(1.02);
-}
-
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 15px;
-    background: #111;
-    margin-top: 20px;
-}
-</style>
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #111;
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav>
     <h1>🏏 Cricship</h1>
-    <div>
-        <a href="#">Home</a>
-        <a href="#">Blog</a>
-        <a href="#">About</a>
-    </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
     <h2>Welcome to Cricship</h2>
     <p>Cricket. Passion. Analysis.</p>
 </div>
 
-<!-- BLOG -->
-<div class="container">
-
-    <div class="card">
-        <h2>India vs Australia – My Take</h2>
-        <p>India’s middle order proved why they are among the best...</p>
-    </div>
-
-    <div class="card">
-        <h2>Top 5 Players to Watch</h2>
-        <p>These players are dominating world cricket...</p>
-    </div>
-
-</div>
-
-<!-- LIVE MATCHES -->
 <div class="container">
     <h2>🏏 Matches</h2>
     <div id="matches">Loading matches...</div>
@@ -123,7 +83,8 @@ async function getMatches() {
 
     try {
         const response = await fetch(
-            `https://api.allorigins.win/get?url=${encodeURIComponent("https://api.cricketdata.org/v1/matches?apikey=" + apiKey)}`
+            "https://api.allorigins.win/get?url=" +
+            encodeURIComponent("https://api.cricketdata.org/v1/matches?apikey=" + apiKey)
         );
 
         const result = await response.json();
@@ -138,21 +99,22 @@ async function getMatches() {
 
                 let badge = "";
 
-                if (match.status.toLowerCase().includes("live")) {
-                    badge = `<span style="color:#00ffcc; font-weight:bold;">● LIVE</span>`;
-                } else if (match.status.toLowerCase().includes("upcoming")) {
-                    badge = `<span style="color:orange;">● UPCOMING</span>`;
+                if (match.status && match.status.toLowerCase().includes("live")) {
+                    badge = "<span style='color:#00ffcc;'>● LIVE</span>";
+                } else if (match.status && match.status.toLowerCase().includes("upcoming")) {
+                    badge = "<span style='color:orange;'>● UPCOMING</span>";
                 } else {
-                    badge = `<span style="color:gray;">● ${match.status}</span>`;
+                    badge = "<span style='color:gray;'>● " + match.status + "</span>";
                 }
 
-                output += `
-                    <div class="match-card">
-                        <h3>${match.name}</h3>
-                        <p><strong>Teams:</strong> ${match.teams.join(" vs ")}</p>
-                        <p>${badge}</p>
-                    </div>
-                `;
+                let teams = match.teams ? match.teams.join(" vs ") : "Teams not available";
+
+                output +=
+                    "<div class='match-card'>" +
+                    "<h3>" + match.name + "</h3>" +
+                    "<p><strong>Teams:</strong> " + teams + "</p>" +
+                    "<p>" + badge + "</p>" +
+                    "</div>";
             });
         }
 
@@ -163,11 +125,11 @@ async function getMatches() {
     }
 }
 
-/* 🔁 Auto refresh every 30 sec */
-setInterval(getMatches, 30000);
-
-/* 🚀 First load */
+/* Load once */
 getMatches();
+
+/* Auto refresh every 30 sec */
+setInterval(getMatches, 30000);
 </script>
 
 <footer>
