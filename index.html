@@ -119,7 +119,7 @@ async function getMatches() {
             output = "<p>No matches available right now.</p>";
         } else {
             data.data.slice(0, 5).forEach(match => {
-                output += `
+                output += ` ... `;
                     <div class="match-card">
                         <h3>${match.name}</h3>
                         <p><strong>Teams:</strong> ${match.teams.join(" vs ")}</p>
