@@ -124,7 +124,25 @@
     <div class="card"><p>Rohit Sharma scored 264 in ODIs.</p></div>
     <div class="card"><p>Test cricket lasts up to 5 days.</p></div>
 </div>
+<div class="container">
+    <h2>🏏 Live Matches</h2>
 
+    <div class="card">
+        <h3>🔴 Live Cricket Scores</h3>
+        <p>Click below to view real-time live matches on Cricbuzz:</p>
+
+        <button onclick="openLive()" 
+        style="padding:12px 20px; background:#1e90ff; color:white; border:none; border-radius:8px; cursor:pointer; font-size:16px;">
+            Watch Live Matches
+        </button>
+    </div>
+</div>
+
+<script>
+function openLive() {
+    window.open("https://www.cricbuzz.com/cricket-match/live-scores", "_blank");
+}
+</script>
 <footer>
     © 2026 Cricship | Made by Shreyas 🚀
 </footer>
