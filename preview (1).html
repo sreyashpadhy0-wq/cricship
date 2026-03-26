@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cricship</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b1e3f;
+            color: white;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: #111;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            margin: 0;
+            color: #1e90ff;
+        }
+
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #1e90ff;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+                        url('https://images.unsplash.com/photo-1593341646782-e0d1fcbad89b');
+            background-size: cover;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        /* CONTENT */
+        .container {
+            padding: 20px;
+        }
+
+        .card {
+            background: #162447;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            transition: 0.3s;
+            border-left: 4px solid #1e90ff;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tag {
+            color: #1e90ff;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #111;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <h1>🏏 Cricship</h1>
+    <div>
+        <a href="#">Home</a>
+        <a href="#">Blog</a>
+        <a href="#">About</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <h2>Welcome to Cricship</h2>
+    <p>Where cricket meets passion, opinions & analysis</p>
+</div>
+
+<!-- POSTS -->
+<div class="container">
+
+    <div class="card">
+        <div class="tag">Match Analysis</div>
+        <h2>India vs Australia – My Take</h2>
+        <p>India’s middle order proved why they are among the best under pressure...</p>
+    </div>
+
+    <div class="card">
+        <div class="tag">Top Picks</div>
+        <h2>Top 5 Players to Watch in 2026</h2>
+        <p>These players are currently dominating world cricket across formats...</p>
+    </div>
+
+    <div class="card">
+        <div class="tag">Opinion</div>
+        <h2>Is T20 Killing Test Cricket?</h2>
+        <p>With leagues growing rapidly, the future of Test cricket is under debate...</p>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Cricship | Made by Shreyas 🚀
+</footer>
+
+</body>
+</html>
